@@ -1,5 +1,4 @@
 
-
 # Static Playlister on ActiveRecord
 
 ## Welcome to the Web!
@@ -12,7 +11,7 @@ Using ActiveRecord and ERB you'll create [ERB template](http://www.stuartellis.e
 
 In this lab, you'll be recreating the basic functionality of Playlister using [ActiveRecord associations](http://guides.rubyonrails.org/association_basics.html). The point of your association is to let your program know that an artist has many songs and therefore those songs belong to that artist. An artist will also have many genres, which it will know of through songs, so `Artist.genres`
 
-You'll have three models: `Artist`, `Song`, and `Genre`. The `Artist` and `Genre` model will each know about it's associated songs and eachother.  To create these [associations](http://guides.rubyonrails.org/association_basics.html#the-has-many-through-association) you will need write proper migrations and ActiveRecord macros, special methods created by ActiveRecord's DSL.
+You'll have three models: `Artist`, `Song`, and `Genre`. The `Artist` and `Genre` model will each know about it's associated songs and eachother.  To create these [associations](http://guides.rubyonrails.org/association_basics.html#the-has-many-through-association) you will need to write proper migrations and ActiveRecord macros, special methods created by ActiveRecord's DSL.
 
 The model tests will be calling methods that your models will, by default, have if your associations are correctly defined. You do not need to write those methods. Once your associations are defined you you can run `rake db:seed` to seed your database with sample data.
 
