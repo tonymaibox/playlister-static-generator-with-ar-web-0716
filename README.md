@@ -85,3 +85,5 @@ This lab provides you with a number of Rake tasks to help you along the way.
 - `rake db:seed` will automatically parse the songs and seed your database, no work required beyond migrations
 - `rake console` will load a pry session with all of your environment loaded to play with the database
 - `rake generate` will run your site generator once it is made assuming it has generate method
+
+<a href='https://learn.co/lessons/playlister-static-generator-with-ar' data-visibility='hidden'>View this lesson on Learn.co</a>
