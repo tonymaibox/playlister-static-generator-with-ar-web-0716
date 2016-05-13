@@ -11,13 +11,14 @@ class SiteGenerator
     FileUtils::mkdir_p "#{self.rendered_path}/genres"
   end
 
-  def build_index
-    # Read the source from the view
-    html = File.read("./app/views/index.html.erb")
-    # Instantiate an ERB instance
-    erb = ERB.new(html)
-    # Write the file and the rendered template
-    File.write("#{rendered_path}/index.html", erb.result(binding))
+  def generate
+    build_index
+    build_artists_index
+    build_artist_page
+    build_songs_index
+    build_song_page
+    build_genres_index
+    build_genre_page
   end
 
   def build_artist_page
@@ -39,7 +40,7 @@ class SiteGenerator
       end
     end
   end
-  
+
   def build_genre_page
     # read erb / setup html
     # for each genre, render a show page named after the genre
@@ -56,7 +57,7 @@ class SiteGenerator
   def render_template(template, filename = template)
     html = File.read("./app/views/#{template}.erb")
     doc = ERB.new(html)
-    
+
     yield if block_given?
 
     File.open("#{@rendered_path}/#{filename}", "w+") do |f|
@@ -72,7 +73,7 @@ class SiteGenerator
     render_template 'artists/index.html' do
       @artists = Artist.all
     end
-  end  
+  end
 
   def build_songs_index
     render_template 'songs/index.html' do
