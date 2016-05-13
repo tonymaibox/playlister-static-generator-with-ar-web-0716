@@ -1,4 +1,3 @@
-
 # Static Playlister on ActiveRecord
 
 ## Welcome to the Web!
@@ -11,7 +10,7 @@ Using ActiveRecord and ERB you'll create [ERB template](http://www.stuartellis.e
 
 In this lab, you'll be recreating the basic functionality of Playlister using [ActiveRecord associations](http://guides.rubyonrails.org/association_basics.html). The point of your association is to let your program know that an artist has many songs and therefore those songs belong to that artist. An artist will also have many genres, which it will know of through songs, so `Artist.genres`
 
-You'll have three models: `Artist`, `Song`, and `Genre`. The `Artist` and `Genre` model will each know about it's associated songs and eachother.  To create these [associations](http://guides.rubyonrails.org/association_basics.html#the-has-many-through-association) you will need to write proper migrations and ActiveRecord macros, special methods created by ActiveRecord's DSL.
+You'll have three models: `Artist`, `Song`, and `Genre`. The `Artist` and `Genre` models will each know about its associated songs and each other.  To create these [associations](http://guides.rubyonrails.org/association_basics.html#the-has-many-through-association) you will need to write proper migrations and ActiveRecord macros, special methods created by ActiveRecord's DSL.
 
 The model tests will be calling methods that your models will, by default, have if your associations are correctly defined. You do not need to write those methods. Once your associations are defined you you can run `rake db:seed` to seed your database with sample data.
 
@@ -24,9 +23,10 @@ The model tests will be calling methods that your models will, by default, have 
 
 ## ERB and Static HTML Sites
 
-Embedded Ruby(ERB) is a way of running Ruby in non `.rb` files. You'll be making your own generator that will read an HTML.ERB file to generate many static pages.
+Embedded Ruby (ERB) is a way of running Ruby in non `.rb` files. You'll be making your own generator that will read an html.erb file to generate many static pages.
 
 ### Folder structure
+
 Your template files will be in the following structure:
 
 ```
@@ -57,6 +57,7 @@ _site
 ```
 
 #### Index Pages
+
 Each model will generally have an index page.  Often they list all instances of model
 - You will need to generate an index page for the top level of `app/views/`
   - The index should have a link to each model and a count of total instances
@@ -67,21 +68,26 @@ Each model will generally have an index page.  Often they list all instances of 
 
 
 #### Show Pages
+
 An instance of a model will often have `show.html.erb` that is rendered as a regular HTML file with information specific to that instance.
 - Each model will have show pages in `app/views/<model>/`
-- `Artist` show pages will have the instnce's name and a list of and link to its genres and songs.
-- `Genre` show pages will have have the instnce's name and a list of and link to its artists and songs.
+- `Artist` show pages will have the instance's name and a list of and link to its genres and songs.
+- `Genre` show pages will have have the instance's name and a list of and link to its artists and songs.
 - `Song` show pages will state the instance's name and names of and links to its artist and genre.
 
-####Site Generator
+#### Site Generator
+
 You will need a class whose sole purpose is generating the static pages.
 - It should accept a path upon initialize to where it will save the files it generates
 - It should use the ERB files from `app/views/` to generate all static pages
 - It will live in `lib/support`
 
-##Helpful Rake Tasks
+## Helpful Rake Tasks
+
 This lab provides you with a number of Rake tasks to help you along the way.
 - `rake db:migrate` will automatically create database and run your migrations all you need to do is write the migrations
 - `rake db:seed` will automatically parse the songs and seed your database, no work required beyond migrations
 - `rake console` will load a pry session with all of your environment loaded to play with the database
 - `rake generate` will run your site generator once it is made assuming it has generate method
+
+<p data-visibility='hidden'>View <a href='https://learn.co/lessons/playlister-static-generator-with-ar' title='Static Playlister on ActiveRecord'>Static Playlister on ActiveRecord</a> on Learn.co and start learning to code for free.</p>

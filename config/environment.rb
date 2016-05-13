@@ -7,7 +7,9 @@ Dir[File.join(File.dirname(__FILE__), "../lib/support", "*.rb")].each {|f| requi
 require_relative "../app/models/concerns/slugifiable.rb"
 Dir[File.join(File.dirname(__FILE__), "../app/models", "*.rb")].each {|f| require f}
 
-DBRegistry[ENV["PLAYLISTER_ENV"]].connect!
+ActiveRecord::Base.establish_connection(
+  YAML.load(File.read('config/database.yml'))[ENV["PLAYLISTER_ENV"]]
+)
 
 DB = ActiveRecord::Base.connection
 
@@ -20,7 +22,7 @@ def migrate_db
     DB.execute("DROP TABLE #{table}")
   end
 
-  Dir[File.join(File.dirname(__FILE__), "../db/migrations", "*.rb")].each do |f| 
+  Dir[File.join(File.dirname(__FILE__), "../db/migrations", "*.rb")].each do |f|
     require f
     migration = Kernel.const_get(f.split("/").last.split(".rb").first.gsub(/\d+/, "").split("_").collect{|w| w.strip.capitalize}.join())
     migration.migrate(:up)
