@@ -7,3 +7,5 @@ gem 'activerecord', :require => 'active_record'
 gem 'rspec'
 gem 'pry'
 gem 'rake'
+# added new items below
+# gem 'sinatra'

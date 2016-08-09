@@ -1,3 +1,5 @@
+require 'active_record'
+require 'rake'
 require 'bundler/setup'
 Bundler.require
 
